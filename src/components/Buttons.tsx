@@ -2,27 +2,20 @@ import { ReactNode, useState } from "react";
 
 interface ButtonProps {
   children: ReactNode;
+  color?: "primary" | "secondary" | "danger" | "success";
+  onClick: () => void;
 }
 
 const buttonArray = ["Button 1", "Button 2", "Button 3"];
 
-function Buttons({ children }: ButtonProps) {
+function Buttons({ children, onClick, color = "primary" }: ButtonProps) {
   const [selectedButton, setSelectedButton] = useState("");
 
   return (
     <>
       <h1>Buttons</h1>
       {buttonArray.map((button, index) => (
-        <button
-          className={
-            selectedButton === button ? "btn btn-primary" : "btn btn-secondary"
-          }
-          key={index}
-          onClick={() => {
-            setSelectedButton(button);
-            console.log(`Selected Button: ${button}`);
-          }}
-        >
+        <button className={"btn btn-" + color} onClick={onClick}>
           {button}
         </button>
       ))}

@@ -4,7 +4,11 @@ import Buttons from "./components/Buttons";
 function App() {
   return (
     <>
-      <Buttons children="Click me"></Buttons>
+      <Buttons
+        children="Click me"
+        onClick={() => console.log("Clicked")}
+        color="danger"
+      ></Buttons>
     </>
   );
 }
